@@ -1,86 +1,81 @@
-# Second Store - Toko Online Barang Bekas Premium
+# Second Store - Toko Online Barang Bekas (Preloved) Premium
 
-**Second Store** adalah sebuah aplikasi web e-commerce minimalis & premium yang dirancang khusus untuk memfasilitasi penjualan barang-barang bekas (secondhand) yang berkualitas dan terkurasi. Mengusung konsep belanja ramah lingkungan (*Eco-Friendly Shopping*), proyek ini membantu memperpanjang masa pakai barang guna mendukung ekonomi sirkular.
-
-Aplikasi ini dibangun menggunakan arsitektur **MVC (Model-View-Controller)** sederhana berbasis PHP Native tanpa framework besar untuk memberikan performa yang cepat dan struktur kode yang mudah dipahami.
+Aplikasi web e-commerce modern berbasis **Laravel 11** yang dirancang khusus untuk toko online barang bekas, preloved, dan thrifting dengan transparansi kondisi barang 100%.
 
 ---
 
 ## 🌟 Fitur Utama
 
-### 👥 Sisi Pengunjung (Public Website)
-- **Katalog Produk Terorganisir**: Menampilkan produk berdasarkan kategori, lengkap dengan label kondisi barang (*Seperti Baru*, *Sangat Baik*, *Layak Pakai*, dan *Pecah/Minus*).
-- **Detail Produk Transparan**: Halaman informasi detail produk yang memaparkan catatan minus (*defect*) secara jujur.
-- **Watermark Terjual**: Penanda visual (*sold watermark*) otomatis untuk produk yang stoknya habis.
-- **Keranjang Belanja & Checkout**: Simulasi alur checkout pembelian produk dengan kalkulasi harga.
-- **Blog & Tips Kelestarian**: Halaman berisi artikel bermanfaat seputar tips merawat barang dan gaya hidup ramah lingkungan.
-- **Mode Gelap (Dark Mode)**: Pengaturan tema website yang adaptif menggunakan local storage.
+### 👥 Sisi Pengunjung (Public Storefront)
+- **Katalog Barang Bekas Terorganisir**: Menampilkan produk berdasarkan kategori lengkap dengan indikator kondisi (`Seperti Baru`, `Sangat Baik`, `Layak Pakai`, `Pecah/Minus`).
+- **Transparansi Catatan Minus (Defect)**: Memaparkan secara jujur kekurangan fisik/fungsional barang bekas pada kartu dan halaman detail produk.
+- **Kalkulasi Persentase Hemat**: Membandingkan harga beli baru vs harga second untuk menampilkan persentase penghematan uang pengguna.
+- **Watermark Terjual (Sold Out)**: Penanda visual otomatis untuk barang yang sudah terjual.
+- **Alur Belanja & WhatsApp Checkout**: Keranjang belanja khusus barang bekas (1 item 1 unit) dengan pembuatan invoice otomatis dan penerusan rincian ke WhatsApp admin.
+- **Artikel Edukasi Thrifting**: Panduan merawat barang preloved dan tips belanja hemat ramah lingkungan.
+- **Mode Gelap (Dark Mode)**: Tampilan modern responsif dengan persistensi tema.
 
 ### 🛡️ Sisi Admin (Admin Panel)
-- **Dashboard Ringkasan**: Dilengkapi visualisasi grafik interaktif menggunakan **Chart.js** untuk melihat perbandingan stok (Tersedia vs Terjual) serta sebaran kategori produk.
-- **Kelola Produk (CRUD)**: Manajemen penuh untuk menambah, mengubah, dan menghapus katalog produk dengan unggah foto produk.
-- **Kelola Kategori (CRUD)**: Klasifikasi kategori produk secara dinamis.
-- **Kelola Blog & Tips (CRUD)**: Publikasi artikel edukatif bagi pengunjung.
-
-### ⚡ Keamanan & UX Tambahan
-- **Global Error Handling**: Pencegahan kebocoran informasi stack trace (PDO/PHP raw errors) ke pengguna. Sistem secara otomatis menampilkan halaman error premium buatan kustom jika terjadi kendala database/sistem.
-- **Universal Loading Overlay**: Efek transisi pemuatan halaman (*loading state*) yang mulus setiap kali melakukan interaksi database, berpindah halaman, atau mengirimkan form CRUD.
+- **Dashboard Ringkasan & Chart.js**: Visualisasi grafik interaktif untuk perbandingan stok (Tersedia vs Terjual), distribusi kategori, dan statistik kondisi barang.
+- **Kelola Produk Bekas (CRUD)**: Manajemen data produk lengkap dengan field spesifik barang bekas (tingkat kondisi, catatan minus, kelengkapan unit, durasi pemakaian, kota pengiriman, dan upload foto).
+- **Kelola Kategori (CRUD)**: Klasifikasi kategori produk dinamis dengan ikon Bootstrap.
+- **Kelola Pesanan (Orders)**: Manajemen pesanan yang masuk melalui checkout web dengan status (*pending*, *confirmed*, *shipped*, *completed*, *cancelled*) serta tombol direct chat WhatsApp pelanggan.
+- **Kelola Artikel (CRUD)**: Publikasi artikel edukatif bagi pembeli.
 
 ---
 
-## 🛠️ Teknologi yang Digunakan
+## 🛠️ Arsitektur & Teknologi
 
-- **Core Engine**: PHP (Arsitektur MVC & Routing Dinamis)
-- **Database**: MySQL / MariaDB
-- **User Interface**: 
-  - Bootstrap 5 (Responsive Framework)
-  - Bootstrap Icons
-  - Outfit (Google Fonts)
-  - Vanilla CSS3 & Vanilla JavaScript
-- **Admin Utilities**:
-  - DataTables (Tabel data interaktif dengan pagination & pencarian)
-  - Chart.js (Grafik inventaris & statistik)
-  - SweetAlert2
+- **Framework**: Laravel 11.x (Clean MVC Architecture)
+- **Database**: SQLite / MySQL (Eloquent ORM, Migrations, Seeders)
+- **UI Framework**: Bootstrap 5.3, Bootstrap Icons, Google Fonts (Outfit)
+- **Charts & UI**: Chart.js
+- **Testing**: PHPUnit / Pest Feature Tests
 
 ---
 
-## 💾 Cara Instalasi
+## 🚀 Cara Menjalankan Proyek
 
-Ikuti langkah-langkah berikut untuk menjalankan proyek **Second Store** di komputer lokal Anda:
-
-### 1. Prasyarat Sistem
-- **Web Server**: Apache/Nginx (Rekomendasi: XAMPP, Laragon, atau MAMP)
-- **PHP Version**: PHP 8.0 ke atas
-- **Database Server**: MySQL / MariaDB
-
-### 2. Langkah Pemasangan
-1. **Unduh/Kloning Repositori**:
-   Tempatkan folder proyek ini di dalam direktori web server Anda (misal `C:/xampp/htdocs/second_store` atau `/var/www/html/second_store`).
-
-2. **Konfigurasi Database**:
-   - Buka MySQL client Anda (seperti phpMyAdmin atau HeidiSQL).
-   - Buat database baru bernama `second_store`.
-   - Impor berkas SQL yang terletak di: [database/second_store.sql](file:///d:/www/second_store/database/second_store.sql) ke dalam database tersebut.
-
-3. **Ubah Konfigurasi Aplikasi** (Jika diperlukan):
-   Buka file [config/config.php](file:///d:/www/second_store/config/config.php) untuk menyesuaikan kredensial koneksi database server Anda:
-   ```php
-   define('DB_HOST', 'localhost');
-   define('DB_USER', 'root');
-   define('DB_PASS', '');
-   define('DB_NAME', 'second_store');
+1. **Clone repository**:
+   ```bash
+   git clone https://github.com/anasikhzf/secondhand-ecommerce-web.git
+   cd secondhand-ecommerce-web
    ```
 
-4. **Jalankan Aplikasi**:
-   Buka browser Anda dan akses URL proyek tersebut, misalnya:
-   `http://localhost/second_store/`
+2. **Pasang Dependensi Composer**:
+   ```bash
+   composer install
+   ```
+
+3. **Konfigurasi Environment**:
+   Salin berkas `.env.example` menjadi `.env` lalu generate key:
+   ```bash
+   php artisan key:generate
+   ```
+
+4. **Jalankan Migrasi & Seeder**:
+   ```bash
+   php artisan migrate --seed
+   ```
+
+5. **Jalankan Server Lokal**:
+   ```bash
+   php artisan serve
+   ```
+   Akses di browser: `http://localhost:8000`
 
 ---
 
-## 🔑 Demo Kredensial Admin
+## 🔑 Akun Default Admin Panel
 
-Untuk masuk ke Panel Admin dan mencoba fitur CRUD, silakan akses halaman login admin di `http://localhost/second_store/admin/login` menggunakan kredensial default berikut:
-
-- **Halaman Login**: [Login Admin](file:///d:/www/second_store/app/views/admin/login.php)
+- **URL Login**: `http://localhost:8000/admin/login`
 - **Username**: `admin`
 - **Password**: `12345`
+
+---
+
+## 🧪 Menjalankan Automated Tests
+
+```bash
+php artisan test
+```
